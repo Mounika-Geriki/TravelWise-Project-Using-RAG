@@ -1,4 +1,4 @@
-# TravelWise-Chatbot-With-RAG-Using-Agent-from-LangGraph
+# TravelWiseNYC-Chatbot
 👋 Welcome to TravelWise NYC!
 
 ## Introduction:
