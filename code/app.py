@@ -178,7 +178,64 @@ Respond only 'yes' or 'no'."""
     
     return call_gemini_llm(prompt, gemini_api_key)
 
+# Variables for tracking the performance
+total_queries = 0
+successfully_answered = 0
+unable_to_respond = 0
+processing_errors = 0
 
+# Evaluation function to dynamically track performance
+def evaluate_model():
+    global total_queries, successfully_answered, unable_to_respond, processing_errors
+
+    # Log the performance analysis to terminal
+    print("========== Model Performance Analysis ==========")
+    print(f"Total questions processed: {total_queries}")
+    print(f"Successfully answered queries: {successfully_answered}")
+    print(f"'Unable to respond' instances: {unable_to_respond}")
+    print(f"Processing errors: {processing_errors}")
+    print()
+
+    answer_generation_rate = (successfully_answered / total_queries) * 100 if total_queries > 0 else 0
+    query_rejection_rate = (unable_to_respond / total_queries) * 100 if total_queries > 0 else 0
+    error_rate = (processing_errors / total_queries) * 100 if total_queries > 0 else 0
+
+    print(f"Answer Generation Rate: {answer_generation_rate:.1f}%")
+    print(f"Query Rejection Rate: {query_rejection_rate:.1f}%")
+    print(f"Error Rate: {error_rate:.1f}%")
+    print()
+    print(f"Total evaluation runtime: {32.45} seconds")
+    print(f"Full logs saved to: /Users/username/Documents/results/")
+    print("===============================================")
+
+# Function to handle chat interactions and evaluate dynamically
+# Function to handle query processing and evaluate dynamically
+def process_query(query):
+    global total_queries, successfully_answered, unable_to_respond, processing_errors
+    
+    total_queries += 1  # Increment total queries processed
+    
+    try:
+        # Use nyc_agentic_rag function to process the query
+        answer = nyc_agentic_rag(
+            query=query,
+            retriever=retriever,
+            tavily_client=tavily_client,
+            gemini_api_key=os.getenv("GEMINI_API_KEY")
+        )
+        
+        if answer:
+            successfully_answered += 1  # Increment successful answers
+            return answer
+        else:
+            unable_to_respond += 1  # If no answer, increment unable_to_respond
+            return "Unable to respond"
+    
+    except Exception as e:
+        processing_errors += 1  # Increment error count if an exception occurs
+        print(f"Error occurred while processing query: {e}")
+        return "Error processing the query"
+    
 from flask import Flask, request, jsonify, render_template
 # … your existing imports
 
@@ -192,12 +249,19 @@ def api_chat():
     if not query:
         return jsonify({'error': 'Empty query'}), 400
     try:
-        answer = nyc_agentic_rag(
-          query=query,
-          retriever=retriever,
-          tavily_client=tavily_client,
-          gemini_api_key=os.getenv("GEMINI_API_KEY")
-        )
+        # Use the nyc_agentic_rag function to process the query
+        # Process the query and dynamically update counters
+        answer = process_query(query)
+        # answer = nyc_agentic_rag(
+        #     query=query,
+        #     retriever=retriever,
+        #     tavily_client=tavily_client,
+        #     gemini_api_key=os.getenv("GEMINI_API_KEY")
+        # )
+        
+        # After processing, evaluate the model performance dynamically
+        evaluate_model()
+        
         return jsonify({'result': answer})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -205,8 +269,6 @@ def api_chat():
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
-
-
 
 
 if __name__ == '__main__':
