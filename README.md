@@ -89,7 +89,7 @@ TravelWise-Project-Using-RAG/
   python-dotenv==1.0.0
   tavily-python==0.2.1
   ```
-## ⚙️** Configuration**
+## ⚙️**Configuration**
 
 Create a .env file in the root directory with the following variables:
 ```
