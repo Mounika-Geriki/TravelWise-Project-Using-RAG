@@ -119,5 +119,31 @@ python app.py
 - The main interface is served from templates/index.html.
 
 
+## Example Queries
 
+```
+"What are the top museums in NYC?"
+"Best pizza spots in NYC"
+"How to travel to Brooklyn from Manhattan?"
+"What parks can I visit in NYC?"
+"3-day NYC itinerary"
+```
+
+## 📊 Performance Tracking
+The application tracks performance metrics:
+
+- Total queries processed
+- Successfully answered queries
+- Query rejection rate
+- Processing errors
+- Answer generation rate
+
+## Future Enhancements
+- Predictive analytics for user intent.
+- Real-time push notifications (weather, transit).
+- Multimodal (image/video) support.
+- Expansion to other cities and document types.
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
