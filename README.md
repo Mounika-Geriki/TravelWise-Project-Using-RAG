@@ -19,7 +19,7 @@ This project will help you to understand the basic of Adaptive RAG and Agents in
 The aim of this project is to improve the traveling experience of tourists visiting New York City by providing general and up-to-date information about the city.
 With this application, tourists will be able to get answers to general questions such as 'Where is the Empire State Building?' or 'What should I eat in Chinatown?' as well as up-to-date questions such as 'What are the subway ticket fares in New York?' or 'What is the weather like in New York City?'
 
-##Key Features:
+## Key Features:
 
 - 🧠 Dynamic routing between vector database information and live web search
 - ✅ Self-verification mechanism ensuring high-quality responses
@@ -29,7 +29,7 @@ With this application, tourists will be able to get answers to general questions
 - 📊 Performance tracking and analytics
 - 📱 Responsive design
 
-##📁 Project Structure
+## 📁 Project Structure
 
 ```
 TravelWise-Project-Using-RAG/
@@ -53,9 +53,9 @@ TravelWise-Project-Using-RAG/
 
 ```
 
-##🔧 Installation
+## 🔧 Installation
 
-1. Prerequisites
+1. **Prerequisites**
 - Python 3.8+
 - pip (Python package installer)
 - Git
@@ -89,7 +89,7 @@ TravelWise-Project-Using-RAG/
   python-dotenv==1.0.0
   tavily-python==0.2.1
   ```
-⚙️** Configuration**
+## ⚙️** Configuration**
 
 Create a .env file in the root directory with the following variables:
 ```
