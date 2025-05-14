@@ -35,10 +35,34 @@ Key Features:
 - pip (Python package installer)
 - Git
 
-2. Clone Repository
-''' bash
-git clone [https://github.com/username/travelwise-nyc.git](https://github.com/Mounika-Geriki/TravelWise-Project-Using-RAG.git)
-cd travelwise-nyc
+2. **Clone Repository**
+   ```bash
+   git clone https://github.com/rishiguptha/nutismart_rag_project.git
+   cd nutismart_rag_project
+   ```
 
+3. **Set Up Virtual Environment**
+   ```bash
+   # Create virtual environment
+    python -m venv venv
+    source venv/bin/activate
+   ```
+4. **Install Dependencies**
+   ```bash
+    pip install -r requirements.txt
+   ```
+📦 Requirements
+The main dependencies include:
+
+  ``` bash
+  flask==2.0.1
+  langchain==0.1.5
+  langchain_community==0.0.12
+  faiss-cpu==1.7.4
+  pymupdf==1.23.8
+  requests==2.31.0
+  python-dotenv==1.0.0
+  tavily-python==0.2.1
+  ```
 
 
