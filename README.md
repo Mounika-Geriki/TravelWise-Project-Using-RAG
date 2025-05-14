@@ -19,7 +19,7 @@ This project will help you to understand the basic of Adaptive RAG and Agents in
 The aim of this project is to improve the traveling experience of tourists visiting New York City by providing general and up-to-date information about the city.
 With this application, tourists will be able to get answers to general questions such as 'Where is the Empire State Building?' or 'What should I eat in Chinatown?' as well as up-to-date questions such as 'What are the subway ticket fares in New York?' or 'What is the weather like in New York City?'
 
-Key Features:
+##Key Features:
 
 - 🧠 Dynamic routing between vector database information and live web search
 - ✅ Self-verification mechanism ensuring high-quality responses
@@ -29,7 +29,32 @@ Key Features:
 - 📊 Performance tracking and analytics
 - 📱 Responsive design
 
-🔧 Installation
+##📁 Project Structure
+
+```
+TravelWise-Project-Using-RAG/
+│
+├── data/                        # PDF knowledge base files
+├── mgllm/                       # (custom LLM utilities, if any)
+├── nyc_faiss_google_index/      # FAISS vector index files
+│   ├── index.faiss
+│   └── index.pkl
+├── static/
+│   ├── images/
+│   └── styles.css               # Custom CSS for frontend
+├── templates/
+│   ├── error.html
+│   ├── index.html
+│   └── result.html
+├── tllm/                        # (custom LLM code, if any)
+├── .env                         # API keys and configuration
+├── app.py                       # Main Flask application
+├── requirements.txt             # Python dependencies
+
+```
+
+##🔧 Installation
+
 1. Prerequisites
 - Python 3.8+
 - pip (Python package installer)
@@ -52,8 +77,8 @@ Key Features:
     pip install -r requirements.txt
    ```
 📦 Requirements
-The main dependencies include:
-
+ The main dependencies include:
+   
   ``` bash
   flask==2.0.1
   langchain==0.1.5
@@ -64,5 +89,35 @@ The main dependencies include:
   python-dotenv==1.0.0
   tavily-python==0.2.1
   ```
+⚙️** Configuration**
+
+Create a .env file in the root directory with the following variables:
+```
+GEMINI_API_KEY=your_google_gemini_api_key
+TAVILY_API_KEY=your_tavily_api_key
+```
+
+ **API Keys**
+ 
+You'll need to obtain the following API keys:
+
+Google AI Studio (Gemini): Get your API key from [Google AI Studio](https://aistudio.google.com/prompts/new_chat)
+Tavily API: Register for a key at [Tavily](https://app.tavily.com/home)
+
+**Knowledge Base**
+- Place your NYC-related PDF documents in the data/ folder.
+- On first run, the FAISS vector index will be built from these files and saved in nyc_faiss_google_index/.
+
+## **Running the Application**
+1. Start the Flask Server
+
+``` bash
+python app.py
+
+```
+- The web app will be available at http:.
+- The main interface is served from templates/index.html.
+
+
 
 
