@@ -62,7 +62,7 @@ TravelWise-Project-Using-RAG/
 
 2. **Clone Repository**
    ```bash
-   git clone [https://github.com/Mounika-Geriki/TravelWise-Project-Using-RAG.git](https://github.com/Mounika-Geriki/TravelWise-Project-Using-RAG.git)
+   git clone https://github.com/Mounika-Geriki/TravelWise-Project-Using-RAG.git
    cd TravelWise-Project-Using-RAG
    ```
 
